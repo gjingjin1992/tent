@@ -1,0 +1,101 @@
+<div class="container">
+
+  <%= simple_form_for(@site) do |f| %>
+
+    <div class="field">
+      <%= f.input :name, autofocus: true, required: true %>
+    </div>
+
+    <div class="field">
+      <label for="main_image">
+        Main image
+        <%= image_tag(f.object.main_image.url, width: '128') %>
+      </label>
+      <%= f.file_field :main_image, label: "Upload main image" %>
+    </div>
+
+    <div class="field">
+      <%= f.input :email, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :general_desc, as: :text, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :detailed_desc, as: :text, required: true %>
+    </div>
+
+    <div class="field">
+       <%= f.association :amenities, as: :check_boxes, collection: @amenities %>
+    </div>
+
+    <div class="field">
+      <%= f.input :arrival_time, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :departure_time, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :site_type_id, collection: @types, selected: @types.first.id, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :address1, label: 'Address 1', required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :address2, label: 'Address 2' %>
+    </div>
+
+    <div class="field">
+      <%= f.input :address3, label: 'Address 3' %>
+    </div>
+
+    <%= f.input :country, as: :hidden, input_html: { value: 'United Kingdom' } %>
+
+    <div class="field">
+      <%= f.input :county, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :city, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :town, required: true %>
+    </div>
+
+    <label for="map">Edit location</label>
+    <div id="map" style="height:500px;">
+    </div>
+
+    <div class="field">
+      <%= f.input :postcode, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :telephone, required: true %>
+    </div>
+
+    <fieldset class="form-group">
+      <legend>Edit site images</legend>
+      <%= f.simple_fields_for :images do |i| %>
+        <label>
+          <%= image_tag(i.object.content.url, width: '128') %>
+          <%= i.file_field :content %>
+        <% end %>
+      </label>
+    </fieldset>
+
+    <%= f.input :latitude,  as: :hidden, input_html: { value: f.object.coordinates.latitude } %>
+    <%= f.input :longitude, as: :hidden, input_html: { value: f.object.coordinates.longitude } %>
+
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+
+  <% end %>
+</div>

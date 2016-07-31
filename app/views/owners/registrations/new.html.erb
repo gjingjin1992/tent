@@ -1,0 +1,62 @@
+<div class="container">
+  <h2>Sign up</h2>
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+    <div class="field">
+      <%= f.input :name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :email, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :password, autocomplete: "off", required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :password_confirmation, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :address1, label: 'Address 1', required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :address2, label: 'Address 2' %>
+    </div>
+
+    <div class="field">
+      <%= f.input :address3, label: 'Address 3' %>
+    </div>
+
+    <%= f.input :country, as: :hidden, value: 'United Kingdom' %>
+
+    <div class="field">
+      <%= f.input :county, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :city, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :town, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :postcode, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :telephone, required: true %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+    <% end %>
+
+    <%= render "owners/shared/links" %>
+</div>

@@ -1,0 +1,37 @@
+<%= simple_form_for([@site, @pitch]) do |f| %>
+
+  <div class="field">
+    <%= f.input :name, autofocus: true, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.input :pitch_type_id, collection: @types, selected: @types.first.id, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.input :max_persons, collection: 1..20, selected: 1, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.input :length, required: true, input_html: { min: 0.5, step: 0.5 } %>
+  </div>
+
+  <div class="field">
+    <%= f.input :width, required: true, input_html: { min: 0.5, step: 0.5 } %>
+  </div>
+
+  <legend for="rates">Rates</legend>
+  <fieldset class="form-group" id="rates">
+    <%= f.simple_fields_for :rates do |r| %>
+      <%= render 'rate_fields', f: r %>
+      <div class="links">
+        <%= link_to_add_association 'add rate', f, :rates %>
+      </div>
+    <% end %>
+  </fieldset>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

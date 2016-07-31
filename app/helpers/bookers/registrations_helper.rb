@@ -1,0 +1,2 @@
+module Bookers::RegistrationsHelper
+end

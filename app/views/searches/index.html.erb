@@ -1,0 +1,33 @@
+<div class="search-box vertical-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="form-section">
+          <div class="row">
+              <%= simple_form_for(:search, url: search_path, method: :get, html: { role: "form" }) do |f|%>
+                <div class="col-md-4">
+                  <%= f.input :pitch_type, collection: @types, class: "form-controll", label: false, include_blank: "Any type" %>
+                </div>
+                <div class="col-md-2">
+                  <%= f.input :start, label: false, placeholder: "Check in",  input_html: {class: "datepicker start-date"} %>
+                </div>
+                <div class="col-md-2">
+                  <%= f.input :end,   label: false, placeholder: "Check out", input_html: {class: "datepicker end-date"} %>
+                </div>
+                <div class="col-md-2">
+                  <%= f.input :guests, collection: guests_for_select, class: "form-controll", label: false, include_blank: false%>
+                </div>
+                <%= f.hidden_field "bounds[sw][lng]", value: -8.29467773 %>
+                <%= f.hidden_field "bounds[sw][lat]", value: 49.86631673 %>
+                <%= f.hidden_field "bounds[ne][lng]", value: 0.38452148 %>
+                <%= f.hidden_field "bounds[ne][lat]", value: 58.75680543 %>
+                <div class="col-md-2">
+                  <button type="submit" class="btn btn-default btn-primary">Search</button>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

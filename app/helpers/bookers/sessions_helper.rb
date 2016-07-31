@@ -1,0 +1,2 @@
+module Bookers::SessionsHelper
+end

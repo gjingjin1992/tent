@@ -1,0 +1,91 @@
+<div class="container">
+
+  <%= simple_form_for(@site) do |f| %>
+
+    <div class="field">
+      <%= f.input :name, autofocus: true, required: true %>
+    </div>
+
+    <div class="field">
+      <label for="main_image">Main image</label>
+      <%= f.file_field :main_image, label: "Upload main image" %>
+    </div>
+
+    <div class="field">
+      <%= f.input :email, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :general_desc, as: :text, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :detailed_desc, as: :text, required: true %>
+    </div>
+
+    <div class="field">
+       <%= f.association :amenities, as: :check_boxes, collection: @amenities %>
+    </div>
+
+    <div class="field">
+      <%= f.input :arrival_time, required: true, selected: Time.parse('10:00') %>
+    </div>
+
+    <div class="field">
+      <%= f.input :departure_time, required: true, selected: Time.parse('12:00') %>
+    </div>
+
+    <div class="field">
+      <%= f.input :site_type_id, collection: @types, selected: @types.first.id, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :address1, label: 'Address 1', required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :address2, label: 'Address 2' %>
+    </div>
+
+    <div class="field">
+      <%= f.input :address3, label: 'Address 3' %>
+    </div>
+
+    <%= f.input :country, as: :hidden, input_html: { value: 'United Kingdom' } %>
+
+    <div class="field">
+      <%= f.input :county, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :city, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :town, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :postcode, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.input :telephone, required: true %>
+    </div>
+
+    <fieldset class="form-group">
+      <legend>Site images</legend>
+      <%= f.simple_fields_for :images do |i| %>
+        <%= i.file_field :content %>
+      <% end %>
+    </fieldset>
+
+    <%= f.input :latitude,  as: :hidden, input_html: { value: 54.003644 } %>
+    <%= f.input :longitude, as: :hidden, input_html: { value: -2.547859 } %>
+
+    <div class="actions">
+      <%= f.submit "Create" %>
+    </div>
+
+  <% end %>
+</div>

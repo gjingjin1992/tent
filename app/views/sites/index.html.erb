@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <%= link_to("Add new site", new_site_path, class: "btn btn-success btn-lg cta-add-site-btn pull-xs-right") %>
+  </div>
+
+  <ul class="list-group">
+    <% @sites.each do |site| %>
+      <li class="list-group-item row">
+        <%= link_to(site.name, site_path(site)) %>
+        <div class="btn-group pull-xs-right" role="group" aria-label="Basic example">
+          <%= link_to("Edit site", edit_site_path(site), class: "btn btn-secondary") %>
+          <%= link_to("Add pitch", new_site_pitch_path(site), class: "btn btn-secondary") %>
+          <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#box-<%= site.id %>" aria-expanded="false" aria-controls="box-<%= site.id %>">Show pitches</button>
+          <button type="button" class="btn btn-secondary">Deactivate</button>
+        </div>
+        <div class="clearfix"></div>
+        <div class="collapse" id="box-<%= site.id %>">
+          <% if site.pitches.empty? %>
+            <p>This site has no associated pitches yet!</p>
+          <% else %>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Guests</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% site.pitches.each.with_index do |pitch, idx| %>
+                  <tr>
+                    <th scope="row"><%= idx + 1 %></th>
+                    <td><%= pitch.name %></td>
+                    <td><%= pitch.type.name %></td>
+                    <td><%= pitch.max_persons %></td>
+                    <td>
+                      <div class="btn-group btn-group-sm pull-xs-right" role="group" aria-label="Basic example">
+                        <%= link_to("Edit pitch", edit_site_pitch_path(site, pitch), class: "btn btn-secondary") %>
+                        <button type="button" class="btn btn-secondary">Show bookings</button>
+                        <button type="button" class="btn btn-secondary">Deactivate</button>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

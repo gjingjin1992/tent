@@ -1,0 +1,19 @@
+<div class="container">
+
+  <h1>Drag marker to adjust location if needed</h1>
+
+  <%= simple_form_for(@site) do |f| %>
+
+    <div id="map" style="height:500px;">
+    </div>
+
+    <%= f.input :latitude,  as: :hidden, input_html: {value: @site.coordinates.latitude} %>
+    <%= f.input :longitude, as: :hidden, input_html: {value: @site.coordinates.longitude} %>
+
+    <div class="actions">
+      <%= f.submit "Done" %>
+    </div>
+
+  <% end %>
+
+</div>

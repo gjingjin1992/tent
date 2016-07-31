@@ -1,0 +1,2 @@
+module Owners::SessionsHelper
+end

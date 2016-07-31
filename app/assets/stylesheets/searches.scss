@@ -1,0 +1,67 @@
+// Place all the styles related to the Searches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.search-box {
+  margin-top: -75px;
+  background-image: image-url('camping1.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 100%;
+  height: 100%; /*Sets the scrollable area to 100% of the viewport*/
+}
+
+.search-box {
+  .form-group, button {
+    margin: 10px 5px 10px 5px;
+  }
+}
+.search-box .form-section{
+	background:rgba(0,0,0,0.6);
+	border: 2px solid #414141;
+	border-radius: 5px;
+  padding-left: 5px;
+}
+
+.filters {
+  margin-top: 20px;
+  background:rgba(0,0,0,0.6);
+	border: 2px solid #414141;
+	border-radius: 5px;
+  color: white;
+  .row {
+    margin-top: 10px;
+  }
+}
+
+.spatialSearchContainer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.sites-container {
+  margin-top: 20px;
+  #site-map {
+    height: 80vh;
+  }
+}
+
+.marker-label {
+  text-align: center;
+  width: 2.5rem;
+  font-size: .750rem;
+  font-weight: 600;
+  color: white;
+  background-color: #FF0000;
+}
+
+.site-list {
+  max-height: 80vh;
+  .site-result {
+    list-style-type: none;
+    img {
+      width: 100%;
+    }
+  }
+}

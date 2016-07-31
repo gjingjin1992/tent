@@ -1,0 +1,33 @@
+<div class="container site-container">
+  <h1><%= @site.name %></h1>
+
+  <p>Amenities:</p>
+  <ul>
+    <% @site.amenities.each do |a| %>
+      <li><%= a.name %></li>
+    <% end %>
+  </ul>
+
+  <p>Pitches:</p>
+  <ol>
+    <%@site.pitches.each do |p|%>
+      <li>
+        <p>
+          <%= p.type.name %> (<%= p.max_persons %>)
+        </p>
+        <p>Rates:</p>
+        <ul>
+          <% p.rates.each do |r| %>
+            <li><%= r.from_date %> - <%= r.to_date %>, price: <%= r.amount %></li>
+          <% end %>
+        </ul>
+        <p>Existing bookings:</p>
+        <ul>
+          <% p.bookings.each do |b| %>
+            <li><%= b.start_date %> - <%= b.end_date %></li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ol>
+</div>
